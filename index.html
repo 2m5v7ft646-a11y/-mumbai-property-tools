@@ -601,7 +601,32 @@ function showTool(tool) {
 
   openLeadForm();
 }
+document.querySelector('form[name="property-lead"]').addEventListener('submit', async function(e) {
+  e.preventDefault();
 
+  const form = this;
+  const button = form.querySelector('button[type="submit"]');
+
+  button.disabled = true;
+  button.innerText = 'Submitting...';
+
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+
+    form.innerHTML = '<h2>Thank you! ✅</h2><p>We have received your requirement. We will contact you shortly.</p>';
+
+  } catch (error) {
+    button.disabled = false;
+    button.innerText = 'Request Property Options';
+    alert('Something went wrong. Please try again.');
+  }
+});
 </script>
 
 </body>
