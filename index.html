@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mumbai Property Tools | Free Real Estate Calculators</title>
+
+<meta name="description" content="Free Mumbai property investment calculators including rental yield, ROI, home loan EMI, buy vs rent and property appreciation.">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f3f8f8;
+  color: #17212b;
+}
+
+header {
+  background: white;
+  padding: 22px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e4e8e8;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #087f79;
+}
+
+.header-tag {
+  color: #697586;
+  font-size: 15px;
+}
+
+.hero {
+  max-width: 1150px;
+  margin: auto;
+  padding: 70px 25px 45px;
+}
+
+.eyebrow {
+  color: #087f79;
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1.02;
+  max-width: 850px;
+  margin: 22px 0;
+}
+
+.hero p {
+  color: #697586;
+  font-size: 21px;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+.calculator {
+  background: white;
+  max-width: 850px;
+  margin: 30px auto 80px;
+  padding: 38px;
+  border-radius: 28px;
+  box-shadow: 0 12px 45px rgba(0,0,0,.07);
+}
+
+.calculator h2 {
+  font-size: 32px;
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 22px 0 8px;
+}
+
+input, select {
+  width: 100%;
+  padding: 17px;
+  border: 1px solid #d7dddd;
+  border-radius: 14px;
+  font-size: 17px;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #087f79;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.calculate {
+  width: 100%;
+  padding: 18px;
+  margin-top: 28px;
+  border-radius: 14px;
+  background: #087f79;
+  color: white;
+}
+
+.result {
+  margin-top: 25px;
+  padding: 25px;
+  background: #0d302e;
+  color: white;
+  border-radius: 18px;
+  display: none;
+}
+
+.result strong {
+  font-size: 34px;
+  display: block;
+  margin: 8px 0;
+}
+
+.result small {
+  color: #d5e6e5;
+}
+
+.cta {
+  margin-top: 25px;
+  padding: 17px;
+  width: 100%;
+  background: white;
+  color: #087f79;
+  border-radius: 12px;
+}
+
+.section {
+  max-width: 1150px;
+  margin: 0 auto 80px;
+  padding: 0 25px;
+}
+
+.section h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.tool-card {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  border: 1px solid #e1e6e6;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.tool-card h3 {
+  margin: 0 0 12px;
+  font-size: 23px;
+}
+
+.tool-card p {
+  margin: 0;
+  color: #697586;
+  line-height: 1.6;
+}
+
+.lead-box {
+  background: #0d302e;
+  color: white;
+  border-radius: 28px;
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.lead-box h2 {
+  margin-top: 0;
+}
+
+.lead-box p {
+  color: #d4e4e3;
+}
+
+.lead-box input,
+.lead-box select {
+  background: white;
+}
+
+.lead-button {
+  background: #ffffff;
+  color: #087f79;
+  padding: 17px;
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 25px;
+}
+
+footer {
+  padding: 40px 25px;
+  text-align: center;
+  color: #697586;
+  font-size: 14px;
+}
+
+.disclaimer {
+  max-width: 800px;
+  margin: 30px auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media(max-width:700px) {
+  header {
+    padding: 18px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .header-tag {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding-top: 45px;
+  }
+
+  .calculator {
+    margin: 20px 15px 60px;
+    padding: 25px;
+  }
+
+  .tools {
+    grid-template-columns: 1fr;
+  }
+
+  .section h2 {
+    font-size: 32px;
+  }
+
+  .lead-box {
+    padding: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mumbai <span>Property Tools</span></div>
+  <div class="header-tag">Free • India-focused</div>
+</header>
+
+<section class="hero">
+
+  <div class="eyebrow">MUMBAI REAL ESTATE INVESTMENT TOOL</div>
+
+  <h1>Know your property's rental yield before you buy.</h1>
+
+  <p>
+    Estimate gross yield, net yield and annual rental cash flow
+    for a residential property in Mumbai or anywhere in India.
+  </p>
+
+</section>
+
+<!-- RENTAL YIELD -->
+
+<div class="calculator" id="rental-yield">
+
+  <h2>Rental Yield Calculator</h2>
+
+  <label>Purchase price (₹)</label>
+  <input id="purchasePrice" type="number" value="12000000">
+
+  <label>Monthly rent (₹)</label>
+  <input id="monthlyRent" type="number" value="45000">
+
+  <label>Annual maintenance (₹)</label>
+  <input id="maintenance" type="number" value="100000">
+
+  <label>Annual property tax (₹)</label>
+  <input id="propertyTax" type="number" value="30000">
+
+  <label>Other annual expenses (₹)</label>
+  <input id="otherExpenses" type="number" value="30000">
+
+  <button class="calculate" onclick="calculateYield()">
+    Calculate Rental Yield
+  </button>
+
+  <div class="result" id="yieldResult">
+    <div>Gross Rental Yield</div>
+    <strong id="grossYield">0%</strong>
+
+    <div>Net Rental Yield</div>
+    <strong id="netYield">0%</strong>
+
+    <div>Annual Net Rental Income</div>
+    <strong id="annualNet">₹0</strong>
+
+    <small>
+      This is an estimate based on the figures you entered.
+    </small>
+
+    <button class="cta" onclick="openLeadForm()">
+      Request property options based on my budget
+    </button>
+  </div>
+
+</div>
+
+
+<!-- OTHER TOOLS -->
+
+<section class="section">
+
+<h2>More free Mumbai property tools</h2>
+
+<div class="tools">
+
+  <div class="tool-card" onclick="showTool('roi')">
+    <h3>Property ROI</h3>
+    <p>Compare rental income + appreciation.</p>
+  </div>
+
+  <div class="tool-card" onclick="showTool('rent')">
+    <h3>Buy vs Rent</h3>
+    <p>Compare renting with buying.</p>
+  </div>
+
+  <div class="tool-card" onclick="showTool('emi')">
+    <h3>Home Loan EMI</h3>
+    <p>Estimate monthly loan payments.</p>
+  </div>
+
+  <div class="tool-card" onclick="showTool('stamp')">
+    <h3>Stamp Duty</h3>
+    <p>Maharashtra purchase-cost estimator.</p>
+  </div>
+
+  <div class="tool-card" onclick="showTool('appreciation')">
+    <h3>Property Appreciation</h3>
+    <p>Project future property value.</p>
+  </div>
+
+  <div class="tool-card" onclick="showTool('carpet')">
+    <h3>Carpet Area</h3>
+    <p>Understand usable vs quoted area.</p>
+  </div>
+
+  <div class="tool-card" onclick="showTool('investment')">
+    <h3>Property vs FD/SIP</h3>
+    <p>Compare investment scenarios.</p>
+  </div>
+
+  <div class="tool-card" onclick="openLeadForm()">
+    <h3>Investment Shortlist</h3>
+    <p>Get property options based on your goal.</p>
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- LEAD GENERATION -->
+
+<section class="section" id="leadSection">
+
+<div class="lead-box">
+
+  <h2>Looking for the right property?</h2>
+
+  <p>
+    Tell us what you're looking for and we'll help you shortlist
+    suitable property options.
+  </p>
+
+  <!-- Netlify Forms -->
+  <form
+    name="property-lead"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+
+    <input type="hidden" name="form-name" value="property-lead">
+
+    <p style="display:none;">
+      <label>
+        Don't fill this out:
+        <input name="bot-field">
+      </label>
+    </p>
+
+    <label>Your name</label>
+    <input type="text" name="name" required placeholder="Your name">
+
+    <label>WhatsApp / Mobile number</label>
+    <input
+      type="tel"
+      name="phone"
+      required
+      placeholder="10-digit mobile number"
+    >
+
+    <label>Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Optional"
+    >
+
+    <label>What are you looking for?</label>
+
+    <select name="requirement">
+      <option value="Investment">Investment</option>
+      <option value="Self Use">Self Use</option>
+      <option value="Rental Income">Rental Income</option>
+      <option value="Luxury Property">Luxury Property</option>
+    </select>
+
+    <label>Approximate budget</label>
+
+    <select name="budget">
+      <option value="Below 1 Cr">Below ₹1 Cr</option>
+      <option value="1-2 Cr">₹1–2 Cr</option>
+      <option value="2-3 Cr">₹2–3 Cr</option>
+      <option value="3-5 Cr">₹3–5 Cr</option>
+      <option value="5-10 Cr">₹5–10 Cr</option>
+      <option value="10 Cr+">₹10 Cr+</option>
+    </select>
+
+    <label>Preferred location</label>
+
+    <input
+      type="text"
+      name="location"
+      placeholder="e.g. Andheri, Goregaon, Borivali"
+    >
+
+    <button class="lead-button" type="submit">
+      Request Property Options
+    </button>
+
+  </form>
+
+</div>
+
+</section>
+
+
+<div class="disclaimer">
+  Mumbai Property Tools is an independent informational tool.
+  Calculator results are estimates and should not be considered
+  financial, legal, tax or investment advice. Actual property costs,
+  rental income, taxes, financing costs and returns may vary.
+</div>
+
+
+<footer>
+  © 2026 Mumbai Property Tools
+</footer>
+
+
+<script>
+
+function formatINR(number) {
+  return "₹" + Math.round(number).toLocaleString("en-IN");
+}
+
+
+function calculateYield() {
+
+  const purchase =
+    Number(document.getElementById("purchasePrice").value) || 0;
+
+  const rent =
+    Number(document.getElementById("monthlyRent").value) || 0;
+
+  const maintenance =
+    Number(document.getElementById("maintenance").value) || 0;
+
+  const tax =
+    Number(document.getElementById("propertyTax").value) || 0;
+
+  const other =
+    Number(document.getElementById("otherExpenses").value) || 0;
+
+  if (purchase <= 0 || rent <= 0) {
+    alert("Please enter a valid purchase price and monthly rent.");
+    return;
+  }
+
+  const annualRent = rent * 12;
+
+  const grossYield =
+    (annualRent / purchase) * 100;
+
+  const annualNet =
+    annualRent - maintenance - tax - other;
+
+  const netYield =
+    (annualNet / purchase) * 100;
+
+  document.getElementById("grossYield").innerText =
+    grossYield.toFixed(2) + "%";
+
+  document.getElementById("netYield").innerText =
+    netYield.toFixed(2) + "%";
+
+  document.getElementById("annualNet").innerText =
+    formatINR(annualNet);
+
+  document.getElementById("yieldResult").style.display =
+    "block";
+}
+
+
+function openLeadForm() {
+
+  document.getElementById("leadSection")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+function showTool(tool) {
+
+  let message = "";
+
+  if (tool === "roi") {
+    message =
+      "Property ROI calculator is coming next. You can request a property shortlist below.";
+  }
+
+  if (tool === "rent") {
+    message =
+      "Buy vs Rent calculator is coming next. You can request a property shortlist below.";
+  }
+
+  if (tool === "emi") {
+    message =
+      "Home Loan EMI calculator is coming next. You can request a property shortlist below.";
+  }
+
+  if (tool === "stamp") {
+    message =
+      "Stamp Duty calculator is coming next. You can request a property shortlist below.";
+  }
+
+  if (tool === "appreciation") {
+    message =
+      "Property Appreciation calculator is coming next. You can request a property shortlist below.";
+  }
+
+  if (tool === "carpet") {
+    message =
+      "Carpet Area calculator is coming next. You can request a property shortlist below.";
+  }
+
+  if (tool === "investment") {
+    message =
+      "Property vs FD/SIP calculator is coming next. You can request a property shortlist below.";
+  }
+
+  alert(message);
+
+  openLeadForm();
+}
+
+</script>
+
+</body>
+</html>
