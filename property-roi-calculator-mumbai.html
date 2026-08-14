@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mumbai Property ROI Calculator | Real Estate Investment Returns</title>
+
+<meta name="description" content="Calculate estimated Mumbai property ROI, capital appreciation and total investment returns. Free real estate investment return calculator for Mumbai property investors.">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #f3f8f8;
+  color: #17212b;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 20px 6%;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #087f75;
+}
+
+header a {
+  color: #17212b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 20px 60px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #52616b;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 7px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #c9d1d5;
+  border-radius: 10px;
+  font-size: 17px;
+  background: white;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #087f75;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.results {
+  display: none;
+  margin-top: 25px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e8ea;
+  gap: 15px;
+}
+
+.result-row strong {
+  text-align: right;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: 800;
+  padding-top: 18px;
+}
+
+.info {
+  color: #52616b;
+}
+
+.note {
+  background: #fff8e6;
+  border-left: 4px solid #e1a400;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.faq {
+  margin-top: 20px;
+}
+
+.faq h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  color: #087f75;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+footer {
+  background: #17212b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .result-row {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mumbai <span>Property Tools</span></div>
+  <a href="index.html">All Tools</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Mumbai Property ROI Calculator</h1>
+  <p>
+    Estimate your potential return on a Mumbai residential property
+    investment using purchase price, costs, rental income and expected
+    selling price.
+  </p>
+</section>
+
+<section class="card">
+
+<h2>Calculate Property ROI</h2>
+
+<p class="info">
+Enter your property purchase and expected sale details. You can also
+include purchase costs and rental income for a more realistic estimate.
+</p>
+
+<label for="purchasePrice">Property Purchase Price (₹)</label>
+
+<input
+  type="number"
+  id="purchasePrice"
+  placeholder="Example: 20000000"
+  min="0"
+>
+
+<label for="purchaseCosts">Purchase Costs — Stamp Duty, Registration etc. (₹)</label>
+
+<input
+  type="number"
+  id="purchaseCosts"
+  placeholder="Example: 1200000"
+  min="0"
+>
+
+<label for="renovationCosts">Renovation / Other Initial Costs (₹)</label>
+
+<input
+  type="number"
+  id="renovationCosts"
+  placeholder="Example: 500000"
+  min="0"
+>
+
+<label for="annualRent">Expected Annual Rental Income (₹)</label>
+
+<input
+  type="number"
+  id="annualRent"
+  placeholder="Example: 600000"
+  min="0"
+>
+
+<label for="holdingPeriod">Holding Period (Years)</label>
+
+<input
+  type="number"
+  id="holdingPeriod"
+  placeholder="Example: 5"
+  min="1"
+  max="50"
+>
+
+<label for="sellingPrice">Expected Selling Price (₹)</label>
+
+<input
+  type="number"
+  id="sellingPrice"
+  placeholder="Example: 28000000"
+  min="0"
+>
+
+<label for="sellingCosts">Selling Costs / Brokerage (₹)</label>
+
+<input
+  type="number"
+  id="sellingCosts"
+  placeholder="Example: 300000"
+  min="0"
+>
+
+<button onclick="calculateROI()">
+  Calculate Property ROI
+</button>
+
+<div class="results" id="results">
+
+<h2>Your Estimated Investment Return</h2>
+
+<div class="result-row">
+  <span>Total initial investment</span>
+  <strong id="totalInvestment">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Total rental income</span>
+  <strong id="totalRent">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Net sale proceeds</span>
+  <strong id="netSale">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Total profit</span>
+  <strong id="totalProfit">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Total ROI</span>
+  <strong id="roiPercent">0%</strong>
+</div>
+
+<div class="result-row total">
+  <span>Estimated annualised ROI</span>
+  <strong id="annualisedROI">0%</strong>
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>How Property ROI Is Calculated</h2>
+
+<p>
+Property ROI measures the return generated by an investment compared
+with the total money invested.
+</p>
+
+<p>
+A realistic property investment calculation should consider more than
+just the difference between the purchase and selling price. Stamp
+duty, registration, renovation expenses, rental income, brokerage and
+other costs can materially affect the actual return.
+</p>
+
+<p>
+This calculator provides an estimate for planning and comparison.
+Actual returns will depend on the property's performance and the
+costs associated with the transaction.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Mumbai Property Investment Example</h2>
+
+<p>
+Suppose you purchase a Mumbai property for ₹2 crore, hold it for five
+years and eventually sell it for ₹2.8 crore.
+</p>
+
+<p>
+Enter your expected purchase costs, rental income and selling costs
+above to estimate the overall return rather than looking only at the
+price appreciation.
+</p>
+
+<div class="note">
+Property investment returns can be affected by taxes, financing
+costs, maintenance, vacancy periods, brokerage and other expenses.
+These are not automatically included unless you enter them into the
+calculator.
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<h3>What is property ROI?</h3>
+<p>
+Property ROI is the return generated from a property investment
+relative to the total money invested.
+</p>
+
+<h3>Does rental income increase property ROI?</h3>
+<p>
+Yes. Rental income can contribute to the overall return from a
+property investment and should be considered alongside capital
+appreciation.
+</p>
+
+<h3>Should stamp duty be included when calculating property ROI?</h3>
+<p>
+Yes. Including stamp duty, registration and other acquisition costs
+can provide a more realistic picture of the investment's return.
+</p>
+
+<h3>Does this calculator include income tax or capital gains tax?</h3>
+<p>
+No. Tax treatment can vary depending on the investor, property and
+transaction. Consult a qualified tax professional for tax-specific
+calculations.
+</p>
+
+<h3>Is property ROI guaranteed?</h3>
+<p>
+No. This calculator provides an estimate based on the assumptions you
+enter. Actual property values, rent, costs and selling prices can
+differ significantly.
+</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Compare Your Mumbai Property Investment</h2>
+
+<p>
+ROI is only one way to evaluate a property investment. You can also
+compare rental yield, appreciation and other investment alternatives
+before making a decision.
+</p>
+
+<a class="back" href="stamp-duty-calculator-mumbai.html">
+  Calculate Mumbai Stamp Duty →
+</a>
+
+<br>
+
+<a class="back" href="home-loan-emi-mumbai.html">
+  Calculate Home Loan EMI →
+</a>
+
+<br>
+
+<a class="back" href="index.html">
+  ← Back to Mumbai Property Tools
+</a>
+
+</section>
+
+</main>
+
+<footer>
+  Mumbai Property Tools • Free Mumbai Real Estate Calculators
+</footer>
+
+<script>
+
+function formatRupees(value) {
+  return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+function calculateROI() {
+
+  const purchasePrice =
+    Number(document.getElementById("purchasePrice").value) || 0;
+
+  const purchaseCosts =
+    Number(document.getElementById("purchaseCosts").value) || 0;
+
+  const renovationCosts =
+    Number(document.getElementById("renovationCosts").value) || 0;
+
+  const annualRent =
+    Number(document.getElementById("annualRent").value) || 0;
+
+  const holdingPeriod =
+    Number(document.getElementById("holdingPeriod").value) || 0;
+
+  const sellingPrice =
+    Number(document.getElementById("sellingPrice").value) || 0;
+
+  const sellingCosts =
+    Number(document.getElementById("sellingCosts").value) || 0;
+
+  if (
+    purchasePrice <= 0 ||
+    holdingPeriod <= 0 ||
+    sellingPrice <= 0
+  ) {
+    alert("Please enter a valid purchase price, holding period and selling price.");
+    return;
+  }
+
+  const totalInvestment =
+    purchasePrice +
+    purchaseCosts +
+    renovationCosts;
+
+  const totalRent =
+    annualRent *
+    holdingPeriod;
+
+  const netSale =
+    sellingPrice -
+    sellingCosts;
+
+  const totalReturn =
+    netSale +
+    totalRent;
+
+  const totalProfit =
+    totalReturn -
+    totalInvestment;
+
+  const roi =
+    (totalProfit / totalInvestment) * 100;
+
+  const annualisedROI =
+    (Math.pow(
+      totalReturn / totalInvestment,
+      1 / holdingPeriod
+    ) - 1) * 100;
+
+  document.getElementById("totalInvestment").textContent =
+    formatRupees(totalInvestment);
+
+  document.getElementById("totalRent").textContent =
+    formatRupees(totalRent);
+
+  document.getElementById("netSale").textContent =
+    formatRupees(netSale);
+
+  document.getElementById("totalProfit").textContent =
+    formatRupees(totalProfit);
+
+  document.getElementById("roiPercent").textContent =
+    roi.toFixed(2) + "%";
+
+  document.getElementById("annualisedROI").textContent =
+    annualisedROI.toFixed(2) + "%";
+
+  document.getElementById("results").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
