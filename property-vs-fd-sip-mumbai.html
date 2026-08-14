@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Property vs FD vs SIP Calculator Mumbai | Investment Comparison</title>
+
+<meta name="description" content="Compare property investment returns with Fixed Deposits and SIPs in Mumbai. Estimate future values, investment amounts and potential returns with this free calculator.">
+
+<link rel="canonical" href="https://mumbai-property-tools.netlify.app/property-vs-fd-sip-mumbai.html">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #f3f8f8;
+  color: #17212b;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 20px 6%;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #087f75;
+}
+
+header a {
+  color: #17212b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 20px 60px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #52616b;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 7px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #c9d1d5;
+  border-radius: 10px;
+  font-size: 17px;
+  background: white;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #087f75;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.results {
+  display: none;
+  margin-top: 25px;
+}
+
+.result-block {
+  border: 1px solid #e1e6e8;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 18px;
+}
+
+.result-block h3 {
+  margin-top: 0;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid #e5e8ea;
+  gap: 15px;
+}
+
+.result-row strong {
+  text-align: right;
+}
+
+.total {
+  font-size: 20px;
+  font-weight: 800;
+  padding-top: 16px;
+}
+
+.info {
+  color: #52616b;
+}
+
+.note {
+  background: #fff8e6;
+  border-left: 4px solid #e1a400;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.faq {
+  margin-top: 20px;
+}
+
+.faq h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  color: #087f75;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+footer {
+  background: #17212b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .result-row {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mumbai <span>Property Tools</span></div>
+  <a href="index.html">All Tools</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Property vs FD vs SIP Calculator Mumbai</h1>
+
+  <p>
+    Compare the potential future value of a property investment with
+    a Fixed Deposit or SIP using your own assumptions.
+  </p>
+</section>
+
+<section class="card">
+
+<h2>Compare Your Investment Options</h2>
+
+<p class="info">
+Enter the amount you are considering investing and compare estimated
+future values across property, FD and SIP scenarios.
+</p>
+
+<label for="initialInvestment">
+Initial Investment Available (₹)
+</label>
+
+<input
+  type="number"
+  id="initialInvestment"
+  placeholder="Example: 5000000"
+  min="0"
+>
+
+<label for="holdingPeriod">
+Investment Period (Years)
+</label>
+
+<input
+  type="number"
+  id="holdingPeriod"
+  placeholder="Example: 10"
+  min="1"
+  max="50"
+>
+
+<label for="propertyGrowth">
+Expected Property Appreciation (% per year)
+</label>
+
+<input
+  type="number"
+  id="propertyGrowth"
+  placeholder="Example: 6"
+  value="6"
+  min="0"
+  step="0.1"
+>
+
+<label for="fdRate">
+Expected FD Return (% per year)
+</label>
+
+<input
+  type="number"
+  id="fdRate"
+  placeholder="Example: 7"
+  value="7"
+  min="0"
+  step="0.1"
+>
+
+<label for="sipReturn">
+Expected SIP Return (% per year)
+</label>
+
+<input
+  type="number"
+  id="sipReturn"
+  placeholder="Example: 12"
+  value="12"
+  min="0"
+  step="0.1"
+>
+
+<label for="monthlySIP">
+Monthly SIP Contribution (₹) — Optional
+</label>
+
+<input
+  type="number"
+  id="monthlySIP"
+  placeholder="Example: 25000"
+  value="0"
+  min="0"
+>
+
+<button onclick="calculateComparison()">
+  Compare Investments
+</button>
+
+<div class="results" id="results">
+
+<h2>Estimated Future Values</h2>
+
+<div class="result-block">
+
+<h3>Property</h3>
+
+<div class="result-row">
+  <span>Initial investment</span>
+  <strong id="propertyInitial">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated future value</span>
+  <strong id="propertyFuture">₹0</strong>
+</div>
+
+<div class="result-row total">
+  <span>Estimated growth</span>
+  <strong id="propertyGrowthValue">₹0</strong>
+</div>
+
+</div>
+
+<div class="result-block">
+
+<h3>Fixed Deposit</h3>
+
+<div class="result-row">
+  <span>Initial investment</span>
+  <strong id="fdInitial">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated maturity value</span>
+  <strong id="fdFuture">₹0</strong>
+</div>
+
+<div class="result-row total">
+  <span>Estimated interest earned</span>
+  <strong id="fdInterest">₹0</strong>
+</div>
+
+</div>
+
+<div class="result-block">
+
+<h3>SIP</h3>
+
+<div class="result-row">
+  <span>Initial investment</span>
+  <strong id="sipInitial">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Total SIP contributions</span>
+  <strong id="sipContributions">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated future value</span>
+  <strong id="sipFuture">₹0</strong>
+</div>
+
+<div class="result-row total">
+  <span>Estimated SIP gain</span>
+  <strong id="sipGain">₹0</strong>
+</div>
+
+</div>
+
+<div class="result-block">
+
+<h3>Comparison</h3>
+
+<div class="result-row">
+  <span>Highest estimated value</span>
+  <strong id="winner">—</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>How Property, FD and SIP Compare</h2>
+
+<p>
+Property, Fixed Deposits and SIPs have different risk, liquidity,
+taxation and return characteristics.
+</p>
+
+<p>
+A property investment can potentially benefit from capital
+appreciation and rental income, but may also involve transaction
+costs, maintenance, taxes and lower liquidity.
+</p>
+
+<p>
+An FD generally provides a predetermined interest rate for its chosen
+tenure, while a SIP invests periodically in market-linked investments
+whose returns are not guaranteed.
+</p>
+
+<div class="note">
+This calculator uses hypothetical return assumptions. It does not
+predict or guarantee actual investment returns and does not include
+taxes, brokerage, stamp duty, maintenance, rental income or all other
+investment costs unless specifically entered.
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Example for a Mumbai Investor</h2>
+
+<p>
+Suppose you have ₹50 lakh available and are deciding whether to use
+it toward a property, an FD or an investment strategy involving SIPs.
+You can enter ₹50 lakh as the initial investment and compare different
+assumptions for the period you expect to remain invested.
+</p>
+
+<p>
+Try several return assumptions rather than relying on a single
+forecast. This can help you understand how sensitive the outcome is
+to different investment returns.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<h3>Is property better than an FD?</h3>
+
+<p>
+There is no universal answer. The outcome depends on property
+appreciation, transaction costs, rental income, FD interest rates,
+taxes, holding period and other factors.
+</p>
+
+<h3>Is SIP better than property?</h3>
+
+<p>
+A SIP and property are very different investments. SIP returns are
+market-linked and not guaranteed, while property involves ownership
+of a physical asset and can generate rental income and capital
+appreciation.
+</p>
+
+<h3>Are SIP returns guaranteed?</h3>
+
+<p>
+No. SIPs are a method of investing periodically and the underlying
+market-linked investments can rise or fall.
+</p>
+
+<h3>Does this calculator include property rental income?</h3>
+
+<p>
+No. This basic comparison focuses on the assumed capital value of the
+property. Rental income and property expenses should be considered
+separately for a more complete property investment analysis.
+</p>
+
+<h3>Does the calculator include taxes?</h3>
+
+<p>
+No. Tax treatment varies between investments and individual
+circumstances, so the results are shown before applicable taxes.
+</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>More Mumbai Property Calculators</h2>
+
+<a class="back" href="home-loan-emi-mumbai.html">
+  Calculate Home Loan EMI →
+</a>
+
+<br>
+
+<a class="back" href="stamp-duty-calculator-mumbai.html">
+  Calculate Mumbai Stamp Duty →
+</a>
+
+<br>
+
+<a class="back" href="property-roi-calculator-mumbai.html">
+  Calculate Property ROI →
+</a>
+
+<br>
+
+<a class="back" href="buy-vs-rent-mumbai.html">
+  Compare Buy vs Rent →
+</a>
+
+<br>
+
+<a class="back" href="property-appreciation-calculator-mumbai.html">
+  Calculate Property Appreciation →
+</a>
+
+<br>
+
+<a class="back" href="carpet-area-calculator-mumbai.html">
+  Calculate Carpet Area →
+</a>
+
+<br>
+
+<a class="back" href="index.html">
+  ← Back to Mumbai Property Tools
+</a>
+
+</section>
+
+</main>
+
+<footer>
+  Mumbai Property Tools • Free Mumbai Real Estate Calculators
+</footer>
+
+<script>
+
+function formatRupees(value) {
+  return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+function compoundValue(principal, annualRate, years) {
+  return principal *
+    Math.pow(1 + annualRate / 100, years);
+}
+
+function calculateComparison() {
+
+  const initialInvestment =
+    Number(document.getElementById("initialInvestment").value) || 0;
+
+  const holdingPeriod =
+    Number(document.getElementById("holdingPeriod").value) || 0;
+
+  const propertyRate =
+    Number(document.getElementById("propertyGrowth").value) || 0;
+
+  const fdRate =
+    Number(document.getElementById("fdRate").value) || 0;
+
+  const sipRate =
+    Number(document.getElementById("sipReturn").value) || 0;
+
+  const monthlySIP =
+    Number(document.getElementById("monthlySIP").value) || 0;
+
+  if (
+    initialInvestment <= 0 ||
+    holdingPeriod <= 0 ||
+    propertyRate < 0 ||
+    fdRate < 0 ||
+    sipRate < 0 ||
+    monthlySIP < 0
+  ) {
+    alert("Please enter valid values in all required fields.");
+    return;
+  }
+
+  const propertyFuture =
+    compoundValue(
+      initialInvestment,
+      propertyRate,
+      holdingPeriod
+    );
+
+  const propertyGain =
+    propertyFuture - initialInvestment;
+
+  const fdFuture =
+    compoundValue(
+      initialInvestment,
+      fdRate,
+      holdingPeriod
+    );
+
+  const fdInterest =
+    fdFuture - initialInvestment;
+
+  const months =
+    holdingPeriod * 12;
+
+  const monthlyRate =
+    sipRate / 100 / 12;
+
+  let sipFuture;
+
+  if (monthlyRate === 0) {
+
+    sipFuture =
+      initialInvestment +
+      monthlySIP * months;
+
+  } else {
+
+    const monthlyContributions =
+      monthlySIP *
+      (
+        (Math.pow(1 + monthlyRate, months) - 1)
+        / monthlyRate
+      );
+
+    const initialInvestmentFuture =
+      initialInvestment *
+      Math.pow(1 + monthlyRate, months);
+
+    sipFuture =
+      initialInvestmentFuture +
+      monthlyContributions;
+  }
+
+  const totalSIPContributions =
+    monthlySIP * months;
+
+  const sipGain =
+    sipFuture -
+    initialInvestment -
+    totalSIPContributions;
+
+  let winner = "Property";
+
+  let highestValue = propertyFuture;
+
+  if (fdFuture > highestValue) {
+    highestValue = fdFuture;
+    winner = "Fixed Deposit";
+  }
+
+  if (sipFuture > highestValue) {
+    highestValue = sipFuture;
+    winner = "SIP";
+  }
+
+  document.getElementById("propertyInitial").textContent =
+    formatRupees(initialInvestment);
+
+  document.getElementById("propertyFuture").textContent =
+    formatRupees(propertyFuture);
+
+  document.getElementById("propertyGrowthValue").textContent =
+    formatRupees(propertyGain);
+
+  document.getElementById("fdInitial").textContent =
+    formatRupees(initialInvestment);
+
+  document.getElementById("fdFuture").textContent =
+    formatRupees(fdFuture);
+
+  document.getElementById("fdInterest").textContent =
+    formatRupees(fdInterest);
+
+  document.getElementById("sipInitial").textContent =
+    formatRupees(initialInvestment);
+
+  document.getElementById("sipContributions").textContent =
+    formatRupees(totalSIPContributions);
+
+  document.getElementById("sipFuture").textContent =
+    formatRupees(sipFuture);
+
+  document.getElementById("sipGain").textContent =
+    formatRupees(sipGain);
+
+  document.getElementById("winner").textContent =
+    winner + " (" + formatRupees(highestValue) + ")";
+
+  document.getElementById("results").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
