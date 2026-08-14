@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mumbai Property Appreciation Calculator | Real Estate Growth Calculator</title>
+
+<meta name="description" content="Calculate the estimated future value and annual appreciation of a Mumbai property. Free property appreciation calculator for Mumbai real estate investors and home buyers.">
+
+<link rel="canonical" href="https://mumbai-property-tools.netlify.app/property-appreciation-calculator-mumbai.html">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #f3f8f8;
+  color: #17212b;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 20px 6%;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #087f75;
+}
+
+header a {
+  color: #17212b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 20px 60px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #52616b;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 7px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #c9d1d5;
+  border-radius: 10px;
+  font-size: 17px;
+  background: white;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #087f75;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.results {
+  display: none;
+  margin-top: 25px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e8ea;
+  gap: 15px;
+}
+
+.result-row strong {
+  text-align: right;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: 800;
+  padding-top: 18px;
+}
+
+.info {
+  color: #52616b;
+}
+
+.note {
+  background: #fff8e6;
+  border-left: 4px solid #e1a400;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.faq {
+  margin-top: 20px;
+}
+
+.faq h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  color: #087f75;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+footer {
+  background: #17212b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .result-row {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mumbai <span>Property Tools</span></div>
+  <a href="index.html">All Tools</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Mumbai Property Appreciation Calculator</h1>
+
+  <p>
+    Estimate how much a Mumbai property could be worth in the future
+    based on its current value and expected annual appreciation rate.
+  </p>
+</section>
+
+<section class="card">
+
+<h2>Calculate Property Appreciation</h2>
+
+<p class="info">
+Enter the current property value, expected annual appreciation and
+holding period to estimate the future property value and total growth.
+</p>
+
+<label for="currentValue">Current Property Value (₹)</label>
+
+<input
+  type="number"
+  id="currentValue"
+  placeholder="Example: 20000000"
+  min="0"
+>
+
+<label for="appreciationRate">Expected Annual Appreciation (%)</label>
+
+<input
+  type="number"
+  id="appreciationRate"
+  placeholder="Example: 6"
+  step="0.1"
+  min="0"
+>
+
+<label for="holdingPeriod">Holding Period (Years)</label>
+
+<input
+  type="number"
+  id="holdingPeriod"
+  placeholder="Example: 10"
+  min="1"
+  max="50"
+>
+
+<button onclick="calculateAppreciation()">
+  Calculate Future Value
+</button>
+
+<div class="results" id="results">
+
+<h2>Estimated Property Growth</h2>
+
+<div class="result-row">
+  <span>Current property value</span>
+  <strong id="startingValue">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated future value</span>
+  <strong id="futureValue">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated total appreciation</span>
+  <strong id="totalGrowth">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Total percentage growth</span>
+  <strong id="growthPercent">0%</strong>
+</div>
+
+<div class="result-row total">
+  <span>Annual appreciation rate</span>
+  <strong id="annualRate">0%</strong>
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>How Property Appreciation Is Calculated</h2>
+
+<p>
+Property appreciation refers to the increase in the market value of a
+property over time.
+</p>
+
+<p>
+This calculator uses compound annual growth. For example, a property
+that appreciates by 6% each year is assumed to grow by 6% on its
+value from the previous year.
+</p>
+
+<p>
+The actual value of a Mumbai property can be influenced by location,
+infrastructure, supply and demand, redevelopment potential, rental
+demand, market conditions and the specific project or building.
+</p>
+
+<div class="note">
+The result is an estimate based entirely on the assumptions you enter.
+It does not guarantee future property prices or investment returns.
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Mumbai Property Appreciation Example</h2>
+
+<p>
+Suppose a Mumbai property is currently worth ₹2 crore and you assume
+an average annual appreciation of 6% for 10 years.
+</p>
+
+<p>
+Enter those values above to see the estimated future value and total
+increase in property value.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<h3>What is property appreciation?</h3>
+
+<p>
+Property appreciation is the increase in a property's market value
+over time.
+</p>
+
+<h3>How is future property value calculated?</h3>
+
+<p>
+This calculator applies compound annual growth to the current
+property value using the annual appreciation rate you enter.
+</p>
+
+<h3>What is a reasonable property appreciation rate in Mumbai?</h3>
+
+<p>
+There is no single rate that applies to all Mumbai properties.
+Appreciation can vary significantly by locality, project, property
+type and market cycle. Use different assumptions to compare scenarios
+rather than relying on a guaranteed rate.
+</p>
+
+<h3>Does rental income count as property appreciation?</h3>
+
+<p>
+No. Property appreciation measures the increase in the property's
+value. Rental income is a separate component of an investment's total
+return.
+</p>
+
+<h3>Is property appreciation guaranteed?</h3>
+
+<p>
+No. Property values can rise or fall depending on market conditions
+and the characteristics of the property.
+</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>More Mumbai Property Calculators</h2>
+
+<a class="back" href="property-roi-calculator-mumbai.html">
+  Calculate Property ROI →
+</a>
+
+<br>
+
+<a class="back" href="home-loan-emi-mumbai.html">
+  Calculate Home Loan EMI →
+</a>
+
+<br>
+
+<a class="back" href="buy-vs-rent-mumbai.html">
+  Compare Buy vs Rent →
+</a>
+
+<br>
+
+<a class="back" href="stamp-duty-calculator-mumbai.html">
+  Calculate Mumbai Stamp Duty →
+</a>
+
+<br>
+
+<a class="back" href="index.html">
+  ← Back to Mumbai Property Tools
+</a>
+
+</section>
+
+</main>
+
+<footer>
+  Mumbai Property Tools • Free Mumbai Real Estate Calculators
+</footer>
+
+<script>
+
+function formatRupees(value) {
+  return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+function calculateAppreciation() {
+
+  const currentValue =
+    Number(document.getElementById("currentValue").value) || 0;
+
+  const appreciationRate =
+    Number(document.getElementById("appreciationRate").value) || 0;
+
+  const holdingPeriod =
+    Number(document.getElementById("holdingPeriod").value) || 0;
+
+  if (
+    currentValue <= 0 ||
+    appreciationRate < 0 ||
+    holdingPeriod <= 0
+  ) {
+    alert("Please enter a valid property value, appreciation rate and holding period.");
+    return;
+  }
+
+  const futureValue =
+    currentValue *
+    Math.pow(
+      1 + appreciationRate / 100,
+      holdingPeriod
+    );
+
+  const totalGrowth =
+    futureValue - currentValue;
+
+  const growthPercent =
+    (totalGrowth / currentValue) * 100;
+
+  document.getElementById("startingValue").textContent =
+    formatRupees(currentValue);
+
+  document.getElementById("futureValue").textContent =
+    formatRupees(futureValue);
+
+  document.getElementById("totalGrowth").textContent =
+    formatRupees(totalGrowth);
+
+  document.getElementById("growthPercent").textContent =
+    growthPercent.toFixed(2) + "%";
+
+  document.getElementById("annualRate").textContent =
+    appreciationRate.toFixed(2) + "%";
+
+  document.getElementById("results").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
