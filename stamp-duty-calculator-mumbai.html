@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mumbai Stamp Duty Calculator 2026 | Property Registration Charges</title>
+
+<meta name="description" content="Calculate estimated Mumbai stamp duty and property registration charges for 2026. Compare stamp duty for standard and eligible female buyers and estimate total government charges.">
+
+<meta name="keywords" content="Mumbai stamp duty calculator, stamp duty calculator Mumbai 2026, Mumbai registration charges, property registration charges Mumbai, Maharashtra stamp duty calculator">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #f3f8f8;
+  color: #17212b;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 20px 6%;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #087f75;
+}
+
+header a {
+  color: #17212b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 20px 60px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #52616b;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 7px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #c9d1d5;
+  border-radius: 10px;
+  font-size: 17px;
+  background: white;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #087f75;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.results {
+  display: none;
+  margin-top: 25px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e8ea;
+  gap: 15px;
+}
+
+.result-row strong {
+  text-align: right;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: 800;
+  padding-top: 18px;
+}
+
+.note {
+  background: #fff8e6;
+  border-left: 4px solid #e1a400;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.info {
+  color: #52616b;
+}
+
+ul {
+  padding-left: 22px;
+}
+
+.faq {
+  margin-top: 20px;
+}
+
+.faq h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  color: #087f75;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+footer {
+  background: #17212b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+footer a {
+  color: white;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .result-row {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mumbai <span>Property Tools</span></div>
+  <a href="index.html">All Tools</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Mumbai Stamp Duty Calculator 2026</h1>
+  <p>
+    Estimate stamp duty, registration charges and total government
+    charges when buying a property in Mumbai.
+  </p>
+</section>
+
+<section class="card">
+
+<h2>Calculate Stamp Duty & Registration Charges</h2>
+
+<p class="info">
+Enter your property value below. If you know the Ready Reckoner value,
+you can enter that too. The calculator uses the higher value as the
+estimated chargeable value.
+</p>
+
+<label for="propertyValue">Agreement / Property Value (₹)</label>
+
+<input
+  type="number"
+  id="propertyValue"
+  placeholder="Example: 10000000"
+  min="0"
+>
+
+<label for="rrValue">Ready Reckoner Value (₹) — Optional</label>
+
+<input
+  type="number"
+  id="rrValue"
+  placeholder="Leave blank if unknown"
+  min="0"
+>
+
+<label for="buyerType">Buyer Type</label>
+
+<select id="buyerType">
+  <option value="standard">Standard / Male buyer — 6%</option>
+  <option value="female">Eligible female-only buyer — 5%</option>
+</select>
+
+<button onclick="calculateStampDuty()">
+  Calculate Stamp Duty
+</button>
+
+<div class="results" id="results">
+
+  <h2>Your Estimated Charges</h2>
+
+  <div class="result-row">
+    <span>Chargeable property value</span>
+    <strong id="chargeableValue">₹0</strong>
+  </div>
+
+  <div class="result-row">
+    <span>Stamp duty rate</span>
+    <strong id="stampRate">0%</strong>
+  </div>
+
+  <div class="result-row">
+    <span>Estimated stamp duty</span>
+    <strong id="stampDuty">₹0</strong>
+  </div>
+
+  <div class="result-row">
+    <span>Estimated registration fee</span>
+    <strong id="registrationFee">₹0</strong>
+  </div>
+
+  <div class="result-row total">
+    <span>Total government charges</span>
+    <strong id="totalCharges">₹0</strong>
+  </div>
+
+  <div class="result-row">
+    <span>Property value + government charges</span>
+    <strong id="grandTotal">₹0</strong>
+  </div>
+
+  <div class="note">
+    This is an estimate for planning purposes. Actual stamp duty can
+    depend on the applicable market / Ready Reckoner valuation and
+    transaction details. Always verify the final payable amount with
+    the Maharashtra Registration & Stamps Department before registration.
+  </div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>How Mumbai Stamp Duty Is Calculated</h2>
+
+<p>
+For a property transaction, stamp duty is generally calculated using
+the applicable market value / Ready Reckoner valuation. If the
+agreement value is lower than the applicable valuation, the higher
+value may be relevant for calculating duty.
+</p>
+
+<p>
+For planning purposes, this calculator currently uses:
+</p>
+
+<ul>
+<li><strong>6%</strong> for standard buyers in Mumbai.</li>
+<li><strong>5%</strong> for eligible female-only buyers.</li>
+<li><strong>Registration fee:</strong> 1%, subject to the applicable
+maximum of ₹30,000 for properties above ₹30 lakh.</li>
+</ul>
+
+<p>
+These figures are intended as an estimate and should not be treated
+as a legal or official quotation.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Mumbai Stamp Duty Example</h2>
+
+<p>
+Suppose you purchase a Mumbai property for ₹1 crore and the applicable
+chargeable value is also ₹1 crore.
+</p>
+
+<ul>
+<li>Property value: ₹1,00,00,000</li>
+<li>Standard stamp duty at 6%: ₹6,00,000</li>
+<li>Registration fee: approximately ₹30,000</li>
+<li><strong>Estimated government charges: ₹6,30,000</strong></li>
+</ul>
+
+<p>
+For an eligible female-only buyer at the 5% planning rate, the
+estimated stamp duty would be ₹5,00,000, plus the applicable
+registration fee.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<h3>What is stamp duty in Mumbai in 2026?</h3>
+<p>
+For planning purposes, Mumbai property transactions are commonly
+calculated at 6% for standard buyers and 5% for eligible female-only
+buyers. The exact applicable duty should be verified before
+registration.
+</p>
+
+<h3>Is stamp duty calculated on the agreement value?</h3>
+<p>
+The applicable valuation can depend on the agreement value and the
+government's Ready Reckoner / market valuation. Buyers should check
+the applicable valuation for their specific property.
+</p>
+
+<h3>How much is property registration in Mumbai?</h3>
+<p>
+Registration charges are generally calculated at 1%, subject to the
+applicable cap. For properties above ₹30 lakh, the commonly reported
+maximum is ₹30,000.
+</p>
+
+<h3>Do women get a stamp duty concession in Mumbai?</h3>
+<p>
+Eligible female-only purchasers can receive a lower stamp duty rate.
+The exact eligibility and applicable concession should be verified
+with the Maharashtra Registration & Stamps Department.
+</p>
+
+<h3>Does this calculator include GST?</h3>
+<p>
+No. GST, if applicable to an under-construction property, is separate
+from stamp duty and registration charges.
+</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Important Before You Register</h2>
+
+<p>
+Use this calculator to estimate your budget, but confirm the final
+charges before signing or registering the agreement. Government
+rates, valuation rules, concessions and other applicable charges
+can change.
+</p>
+
+<p>
+For official information, visit the Maharashtra Department of
+Registration & Stamps.
+</p>
+
+<a
+  class="back"
+  href="https://igrmaharashtra.gov.in/"
+  target="_blank"
+  rel="noopener"
+>
+  Visit Maharashtra Registration & Stamps →
+</a>
+
+<br>
+
+<a class="back" href="index.html">
+  ← Back to Mumbai Property Tools
+</a>
+
+</section>
+
+</main>
+
+<footer>
+  Mumbai Property Tools • Free Mumbai Real Estate Calculators
+</footer>
+
+<script>
+
+function formatRupees(value) {
+  return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+function calculateStampDuty() {
+
+  const propertyValue =
+    Number(document.getElementById("propertyValue").value) || 0;
+
+  const rrValue =
+    Number(document.getElementById("rrValue").value) || 0;
+
+  const buyerType =
+    document.getElementById("buyerType").value;
+
+  if (propertyValue <= 0) {
+    alert("Please enter the property value.");
+    return;
+  }
+
+  const chargeableValue =
+    Math.max(propertyValue, rrValue);
+
+  let stampRate;
+
+  if (buyerType === "female") {
+    stampRate = 0.05;
+  } else {
+    stampRate = 0.06;
+  }
+
+  const stampDuty =
+    chargeableValue * stampRate;
+
+  let registrationFee =
+    chargeableValue * 0.01;
+
+  if (chargeableValue > 3000000) {
+    registrationFee = 30000;
+  }
+
+  const totalCharges =
+    stampDuty + registrationFee;
+
+  const grandTotal =
+    chargeableValue + totalCharges;
+
+  document.getElementById("chargeableValue").textContent =
+    formatRupees(chargeableValue);
+
+  document.getElementById("stampRate").textContent =
+    (stampRate * 100) + "%";
+
+  document.getElementById("stampDuty").textContent =
+    formatRupees(stampDuty);
+
+  document.getElementById("registrationFee").textContent =
+    formatRupees(registrationFee);
+
+  document.getElementById("totalCharges").textContent =
+    formatRupees(totalCharges);
+
+  document.getElementById("grandTotal").textContent =
+    formatRupees(grandTotal);
+
+  document.getElementById("results").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
