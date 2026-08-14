@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Buy vs Rent Calculator Mumbai | Property Investment Calculator</title>
+
+<meta name="description" content="Compare buying a property versus renting in Mumbai. Estimate rent paid, home loan costs, property value and potential financial outcomes using our free Buy vs Rent calculator.">
+
+<link rel="canonical" href="https://mumbai-property-tools.netlify.app/buy-vs-rent-mumbai.html">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #f3f8f8;
+  color: #17212b;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 20px 6%;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #087f75;
+}
+
+header a {
+  color: #17212b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 20px 60px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #52616b;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 7px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #c9d1d5;
+  border-radius: 10px;
+  font-size: 17px;
+  background: white;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #087f75;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.results {
+  display: none;
+  margin-top: 25px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e8ea;
+  gap: 15px;
+}
+
+.result-row strong {
+  text-align: right;
+}
+
+.total {
+  font-size: 21px;
+  font-weight: 800;
+  padding-top: 18px;
+}
+
+.info {
+  color: #52616b;
+}
+
+.note {
+  background: #fff8e6;
+  border-left: 4px solid #e1a400;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.faq {
+  margin-top: 20px;
+}
+
+.faq h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  color: #087f75;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+footer {
+  background: #17212b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .result-row {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mumbai <span>Property Tools</span></div>
+  <a href="index.html">All Tools</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Buy vs Rent Calculator Mumbai</h1>
+
+  <p>
+    Compare the estimated financial impact of buying a property versus
+    renting in Mumbai over your chosen time period.
+  </p>
+</section>
+
+<section class="card">
+
+<h2>Buy vs Rent Calculator</h2>
+
+<p class="info">
+Enter your property price, rent, loan details and expected holding
+period to compare the two options.
+</p>
+
+<label for="propertyPrice">Property Purchase Price (₹)</label>
+
+<input
+  type="number"
+  id="propertyPrice"
+  placeholder="Example: 20000000"
+  min="0"
+>
+
+<label for="downPayment">Down Payment (₹)</label>
+
+<input
+  type="number"
+  id="downPayment"
+  placeholder="Example: 5000000"
+  min="0"
+>
+
+<label for="loanRate">Home Loan Interest Rate (%)</label>
+
+<input
+  type="number"
+  id="loanRate"
+  placeholder="Example: 8.5"
+  step="0.01"
+  min="0"
+>
+
+<label for="loanTenure">Home Loan Tenure (Years)</label>
+
+<input
+  type="number"
+  id="loanTenure"
+  placeholder="Example: 20"
+  min="1"
+  max="40"
+>
+
+<label for="monthlyRent">Current Monthly Rent (₹)</label>
+
+<input
+  type="number"
+  id="monthlyRent"
+  placeholder="Example: 60000"
+  min="0"
+>
+
+<label for="rentIncrease">Expected Annual Rent Increase (%)</label>
+
+<input
+  type="number"
+  id="rentIncrease"
+  placeholder="Example: 5"
+  step="0.1"
+  min="0"
+>
+
+<label for="holdingPeriod">Comparison Period (Years)</label>
+
+<input
+  type="number"
+  id="holdingPeriod"
+  placeholder="Example: 10"
+  min="1"
+  max="40"
+>
+
+<label for="propertyGrowth">Expected Annual Property Appreciation (%)</label>
+
+<input
+  type="number"
+  id="propertyGrowth"
+  placeholder="Example: 6"
+  step="0.1"
+  min="0"
+>
+
+<label for="buyingCosts">Buying Costs — Stamp Duty, Registration etc. (₹)</label>
+
+<input
+  type="number"
+  id="buyingCosts"
+  placeholder="Example: 1200000"
+  min="0"
+>
+
+<button onclick="calculateComparison()">
+  Compare Buy vs Rent
+</button>
+
+<div class="results" id="results">
+
+<h2>Estimated Comparison</h2>
+
+<div class="result-row">
+  <span>Estimated monthly home loan EMI</span>
+  <strong id="emi">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Total rent paid</span>
+  <strong id="totalRent">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated property value</span>
+  <strong id="futurePropertyValue">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated outstanding loan</span>
+  <strong id="outstandingLoan">₹0</strong>
+</div>
+
+<div class="result-row">
+  <span>Estimated buyer's property equity</span>
+  <strong id="buyerEquity">₹0</strong>
+</div>
+
+<div class="result-row total">
+  <span>Estimated financial advantage of buying</span>
+  <strong id="advantage">₹0</strong>
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>How Buy vs Rent Works</h2>
+
+<p>
+Buying a property creates an asset, but it also involves a down
+payment, home loan interest and transaction costs.
+</p>
+
+<p>
+Renting usually requires less upfront capital, but rent can increase
+over time and you do not build property ownership through rent
+payments.
+</p>
+
+<p>
+This calculator compares the basic financial impact of the two
+choices using the assumptions you provide.
+</p>
+
+<div class="note">
+This is an estimate, not financial advice. Actual results can differ
+because of property prices, rent changes, interest rates, taxes,
+maintenance, investment returns and other costs.
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Example: Buying vs Renting in Mumbai</h2>
+
+<p>
+Consider a Mumbai property priced at ₹2 crore. You could compare the
+cost of buying it with renting a similar property by entering the
+purchase price, down payment, loan terms, current rent and expected
+property appreciation.
+</p>
+
+<p>
+The longer you remain in a property, the more important factors such
+as appreciation, loan interest and transaction costs can become.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+
+<h3>Is buying a property always better than renting?</h3>
+
+<p>
+No. The better option depends on property prices, rent, loan costs,
+expected appreciation, how long you plan to stay and what you could
+do with the money that would otherwise be used as a down payment.
+</p>
+
+<h3>Does this calculator include home loan EMI?</h3>
+
+<p>
+Yes. The calculator estimates EMI using the loan amount, interest rate
+and loan tenure you enter.
+</p>
+
+<h3>Does the calculator account for rent increases?</h3>
+
+<p>
+Yes. It estimates cumulative rent using the annual rent increase
+percentage you provide.
+</p>
+
+<h3>Does the calculator include property appreciation?</h3>
+
+<p>
+Yes. You can enter an expected annual appreciation rate to estimate
+the property's future value.
+</p>
+
+<h3>Is this a complete investment comparison?</h3>
+
+<p>
+No. This is a simplified comparison tool. It does not automatically
+account for every possible factor such as maintenance, taxes,
+insurance, opportunity cost or alternative investment returns.
+</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Other Mumbai Property Calculators</h2>
+
+<a class="back" href="home-loan-emi-mumbai.html">
+  Calculate Home Loan EMI →
+</a>
+
+<br>
+
+<a class="back" href="stamp-duty-calculator-mumbai.html">
+  Calculate Mumbai Stamp Duty →
+</a>
+
+<br>
+
+<a class="back" href="property-roi-calculator-mumbai.html">
+  Calculate Property ROI →
+</a>
+
+<br>
+
+<a class="back" href="index.html">
+  ← Back to Mumbai Property Tools
+</a>
+
+</section>
+
+</main>
+
+<footer>
+  Mumbai Property Tools • Free Mumbai Real Estate Calculators
+</footer>
+
+<script>
+
+function formatRupees(value) {
+  return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+function calculateEMI(principal, annualRate, years) {
+
+  const months = years * 12;
+
+  if (principal <= 0 || annualRate <= 0 || months <= 0) {
+    return 0;
+  }
+
+  const monthlyRate = annualRate / 12 / 100;
+
+  return principal *
+    monthlyRate *
+    Math.pow(1 + monthlyRate, months) /
+    (Math.pow(1 + monthlyRate, months) - 1);
+}
+
+function calculateOutstandingLoan(
+  principal,
+  annualRate,
+  totalYears,
+  elapsedYears
+) {
+
+  const totalMonths = totalYears * 12;
+  const elapsedMonths = Math.min(
+    elapsedYears * 12,
+    totalMonths
+  );
+
+  if (
+    principal <= 0 ||
+    annualRate <= 0 ||
+    totalMonths <= 0
+  ) {
+    return 0;
+  }
+
+  const monthlyRate = annualRate / 12 / 100;
+
+  const emi = calculateEMI(
+    principal,
+    annualRate,
+    totalYears
+  );
+
+  const balance =
+    principal *
+    Math.pow(1 + monthlyRate, elapsedMonths)
+    -
+    emi *
+    (
+      (Math.pow(1 + monthlyRate, elapsedMonths) - 1)
+      / monthlyRate
+    );
+
+  return Math.max(0, balance);
+}
+
+function calculateComparison() {
+
+  const propertyPrice =
+    Number(document.getElementById("propertyPrice").value) || 0;
+
+  const downPayment =
+    Number(document.getElementById("downPayment").value) || 0;
+
+  const loanRate =
+    Number(document.getElementById("loanRate").value) || 0;
+
+  const loanTenure =
+    Number(document.getElementById("loanTenure").value) || 0;
+
+  const monthlyRent =
+    Number(document.getElementById("monthlyRent").value) || 0;
+
+  const rentIncrease =
+    Number(document.getElementById("rentIncrease").value) || 0;
+
+  const holdingPeriod =
+    Number(document.getElementById("holdingPeriod").value) || 0;
+
+  const propertyGrowth =
+    Number(document.getElementById("propertyGrowth").value) || 0;
+
+  const buyingCosts =
+    Number(document.getElementById("buyingCosts").value) || 0;
+
+  if (
+    propertyPrice <= 0 ||
+    downPayment < 0 ||
+    loanRate <= 0 ||
+    loanTenure <= 0 ||
+    monthlyRent < 0 ||
+    holdingPeriod <= 0
+  ) {
+    alert("Please enter valid values in the required fields.");
+    return;
+  }
+
+  if (downPayment >= propertyPrice) {
+    alert("Down payment should be less than the property purchase price.");
+    return;
+  }
+
+  const loanAmount =
+    propertyPrice - downPayment;
+
+  const emi =
+    calculateEMI(
+      loanAmount,
+      loanRate,
+      loanTenure
+    );
+
+  let totalRent = 0;
+  let currentMonthlyRent = monthlyRent;
+
+  for (
+    let year = 1;
+    year <= holdingPeriod;
+    year++
+  ) {
+
+    totalRent +=
+      currentMonthlyRent * 12;
+
+    currentMonthlyRent *=
+      1 + rentIncrease / 100;
+  }
+
+  const futurePropertyValue =
+    propertyPrice *
+    Math.pow(
+      1 + propertyGrowth / 100,
+      holdingPeriod
+    );
+
+  const outstandingLoan =
+    calculateOutstandingLoan(
+      loanAmount,
+      loanRate,
+      loanTenure,
+      holdingPeriod
+    );
+
+  const buyerEquity =
+    futurePropertyValue -
+    outstandingLoan;
+
+  const initialBuyerCost =
+    downPayment +
+    buyingCosts;
+
+  const totalBuyerCashOutflow =
+    initialBuyerCost +
+    emi * holdingPeriod * 12;
+
+  const buyerNetPosition =
+    buyerEquity -
+    totalBuyerCashOutflow;
+
+  const renterPosition =
+    -totalRent;
+
+  const advantage =
+    buyerNetPosition -
+    renterPosition;
+
+  document.getElementById("emi").textContent =
+    formatRupees(emi);
+
+  document.getElementById("totalRent").textContent =
+    formatRupees(totalRent);
+
+  document.getElementById("futurePropertyValue").textContent =
+    formatRupees(futurePropertyValue);
+
+  document.getElementById("outstandingLoan").textContent =
+    formatRupees(outstandingLoan);
+
+  document.getElementById("buyerEquity").textContent =
+    formatRupees(buyerEquity);
+
+  document.getElementById("advantage").textContent =
+    formatRupees(advantage);
+
+  document.getElementById("results").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
